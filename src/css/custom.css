@@ -1,0 +1,153 @@
+/* Hallmark · checked: 2026-10-29 · genre: modern-minimal (inferred)
+ * built: the project · redesign: polish · scope: app · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R5 V3 · weakest: V, retain the documentation shell for familiar navigation */
+/* Hallmark · finish-review: subagent · 1 finding · 1 resolved after recapture */
+:root {
+  --docs-brand: #47b878;
+  --docs-brand-hover: #3fb572;
+  --ifm-color-primary: #237a49;
+  --ifm-color-primary-dark: #206e42;
+  --ifm-color-primary-darker: #1e683e;
+  --ifm-color-primary-darkest: #195533;
+  --ifm-color-primary-light: #278650;
+  --ifm-color-primary-lighter: #288c54;
+  --ifm-color-primary-lightest: #2e9f5f;
+  --ifm-background-color: #fcfefd;
+  --ifm-background-surface-color: #fcfefd;
+  --ifm-font-color-base: #243b2e;
+  --ifm-color-content-secondary: #52685b;
+  --ifm-heading-color: #183324;
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+  --ifm-font-family-monospace: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --ifm-font-size-base: 17px;
+  --ifm-line-height-base: 1.8;
+  --ifm-heading-line-height: 1.35;
+  --ifm-code-font-size: 85%;
+  --ifm-container-width: 1180px;
+  --ifm-container-width-xl: 1320px;
+  --doc-sidebar-width: 272px;
+  --docs-rule: #dce8e0;
+  --docs-surface: #f0f7f3;
+  --docs-selected: #e2f3e9;
+  --docs-on-accent: #102d1d;
+  --docs-focus: #237a49;
+  --docs-radius: 6px;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+}
+
+:root[data-theme='dark'] {
+  --ifm-color-primary: #63cb90;
+  --ifm-color-primary-dark: #47b878;
+  --ifm-color-primary-darker: #3fb572;
+  --ifm-color-primary-darkest: #37a266;
+  --ifm-color-primary-light: #82d6a5;
+  --ifm-color-primary-lighter: #a2e1bc;
+  --ifm-color-primary-lightest: #c2ecd3;
+  --ifm-background-color: #121e18;
+  --ifm-background-surface-color: #192a20;
+  --ifm-font-color-base: #dcebe2;
+  --ifm-color-content-secondary: #aec7b8;
+  --ifm-heading-color: #eef7f1;
+  --docs-rule: #354c3e;
+  --docs-surface: #20372a;
+  --docs-selected: #254a34;
+  --docs-on-accent: #102d1d;
+  --docs-focus: #63cb90;
+}
+
+html, body { overflow-x: clip; }
+body {
+  caret-color: var(--ifm-color-primary);
+  scrollbar-color: var(--ifm-color-content-secondary) var(--ifm-background-color);
+}
+::selection {
+  background: var(--docs-selected);
+  color: var(--ifm-heading-color);
+}
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--docs-focus);
+  outline-offset: 3px;
+  transition: none;
+}
+.navbar {
+  box-shadow: none;
+  border-bottom: 1px solid var(--docs-rule);
+}
+.navbar__logo, .navbar__logo img { width: 22px; height: 22px; }
+.navbar__link { white-space: nowrap; }
+.menu, .table-of-contents { font-size: 0.875rem; line-height: 1.6; }
+.menu__link { border-radius: var(--docs-radius); padding-block: var(--space-2); }
+.menu__link--active:not(.menu__link--sublist) { background: var(--docs-selected); }
+.theme-doc-markdown {
+  max-width: 75ch;
+  margin-inline: auto;
+  padding-block: var(--space-4) var(--space-8);
+}
+.markdown h1, .markdown h2, .markdown h3, .markdown h4 {
+  min-width: 0;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+.markdown h1 { font-size: clamp(1.875rem, 3vw, 2.5rem); margin-bottom: var(--space-6); }
+.markdown h2 {
+  font-size: 1.5rem;
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--docs-rule);
+}
+.markdown h3 { font-size: 1.125rem; margin-top: var(--space-8); margin-bottom: var(--space-3); }
+.markdown p, .markdown li { overflow-wrap: break-word; }
+.markdown a:not(.hash-link) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+.markdown table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+.markdown th, .markdown td {
+  padding: var(--space-3) var(--space-4);
+  border-color: var(--docs-rule);
+  vertical-align: top;
+}
+.markdown th { background: var(--docs-surface); text-align: left; }
+.markdown td code { white-space: normal; overflow-wrap: anywhere; }
+.markdown pre { line-height: 1.65; }
+.docs-actions p { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
+.docs-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--docs-radius);
+}
+.docs-actions a:first-child {
+  color: var(--docs-on-accent);
+  background: var(--docs-brand);
+  text-decoration: none;
+}
+.docs-actions a:first-child:hover, .docs-actions a:first-child:active { background: var(--docs-brand-hover); }
+.docs-paths { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); }
+.docs-paths h3 { margin-top: var(--space-4); }
+.docs-paths section:nth-child(n + 3) { border-top: 1px solid var(--docs-rule); }
+@media (max-width: 600px) {
+  .theme-doc-markdown { padding-inline: var(--space-1); }
+  .docs-paths { grid-template-columns: minmax(0, 1fr); gap: var(--space-2); }
+  .docs-paths section + section { border-top: 1px solid var(--docs-rule); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

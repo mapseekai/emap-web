@@ -1,0 +1,54 @@
+{
+  "link.title.文档": {
+    "message": "Documentation",
+    "description": "The title of the footer links column with title=文档"
+  },
+  "link.title.资源": {
+    "message": "Resources",
+    "description": "The title of the footer links column with title=资源"
+  },
+  "link.title.生态与依赖": {
+    "message": "Ecosystem",
+    "description": "The title of the footer links column with title=生态与依赖"
+  },
+  "link.item.label.快速入门": {
+    "message": "Quick start",
+    "description": "The label of footer link with label=快速入门 linking to /getting-started/quick-start"
+  },
+  "link.item.label.操作指南": {
+    "message": "How-to guides",
+    "description": "The label of footer link with label=操作指南 linking to /guides/"
+  },
+  "link.item.label.核心概念": {
+    "message": "Concepts",
+    "description": "The label of footer link with label=核心概念 linking to /concepts/overview"
+  },
+  "link.item.label.参考手册": {
+    "message": "Reference",
+    "description": "The label of footer link with label=参考手册 linking to /reference/"
+  },
+  "link.item.label.可运行示例": {
+    "message": "Examples",
+    "description": "The label of footer link with label=可运行示例 linking to pathname:///mapseekai/emap/examples/"
+  },
+  "link.item.label.TypeDoc API": {
+    "message": "API reference",
+    "description": "The label of footer link with label=TypeDoc API linking to pathname:///mapseekai/emap/api/"
+  },
+  "link.item.label.GitHub 仓库": {
+    "message": "GitHub repository",
+    "description": "The label of footer link with label=GitHub 仓库 linking to https://github.com/mapseekai/emap"
+  },
+  "link.item.label.Mapshaper": {
+    "message": "Mapshaper",
+    "description": "The label of footer link with label=Mapshaper"
+  },
+  "link.item.label.DuckDB-Wasm": {
+    "message": "DuckDB-Wasm",
+    "description": "The label of footer link with label=DuckDB-Wasm"
+  },
+  "link.item.label.Cordis": {
+    "message": "Cordis",
+    "description": "The label of footer link with label=Cordis"
+  }
+}

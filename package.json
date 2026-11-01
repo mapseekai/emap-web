@@ -1,0 +1,41 @@
+{
+  "name": "@mapseekai/emap-web",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.15.1",
+  "engines": {
+    "node": ">=22.18 <25"
+  },
+  "scripts": {
+    "start": "docusaurus start",
+    "build": "node scripts/prepare-assets.mjs && docusaurus build",
+    "build:site": "docusaurus build",
+    "assets:sync": "node scripts/prepare-assets.mjs --reuse",
+    "serve": "node scripts/preview-docs.mjs",
+    "clear": "docusaurus clear",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test/*.test.mjs && vitest run",
+    "check:content": "node scripts/check-docs-i18n.mjs && node scripts/check-docs-api.mjs",
+    "verify": "pnpm run typecheck && pnpm test && pnpm run build && pnpm run check:content"
+  },
+  "dependencies": {
+    "@docusaurus/core": "3.10.2",
+    "@docusaurus/plugin-content-docs": "3.10.2",
+    "@docusaurus/preset-classic": "3.10.2",
+    "@docusaurus/types": "3.10.2",
+    "@mdx-js/react": "3.1.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "3.10.2",
+    "@docusaurus/theme-mermaid": "3.10.2",
+    "@docusaurus/tsconfig": "3.10.2",
+    "@easyops-cn/docusaurus-search-local": "^0.55.3",
+    "@mermaid-js/layout-elk": "^1.0.1",
+    "@types/node": "24.13.1",
+    "@types/react": "19.2.17",
+    "typescript": "5.9.3",
+    "vitest": "4.1.9"
+  }
+}

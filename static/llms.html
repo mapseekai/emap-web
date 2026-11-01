@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Emap documentation index</title><style>body{max-width:76ch;margin:2rem auto;padding:0 1rem;color:#163323;background:#fcfefd;font:16px/1.7 system-ui}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}a{color:#237a49}</style><main><p><a href="/mapseekai/emap/">Emap documentation</a> · <a href="llms.txt">Plain text index</a></p><pre># Emap developer documentation
+
+&gt; Emap is a browser map rendering and editing engine. This index points to the authored guides and generated API for the current source tree. It is not a release or device-validation claim.
+
+## Integration contracts
+
+- Create a map after its sized DOM container mounts, using await Emap.create(). A string container is an element ID, without #.
+- WebGL2 is the default backend. Canvas2D and WebGPU are explicit choices with different environment requirements. GPU initialization failure rejects creation rather than silently changing backend.
+- Sources own vector datasets; render layers reference source IDs and data-layer IDs. FeatureRef IDs are indexes, not durable business keys.
+- project/unproject transform project coordinates and canvas pixels. reproject changes the CRS. Do not confuse degrees, projected units, and pixels.
+- Use public editing and attribute APIs for mutations. Readonly datasets are live views; feature properties are shallow-frozen snapshots.
+- Check OpResult.ok. Also catch rejected Promises from initialization, import, and independent tools. Diagnostic events do not replace either check.
+- JavaScript-style processing expressions are disabled by default. trusted is only for application-controlled expressions, not an input sandbox.
+- Optional Arrow, DuckDB, MapLibre, GeoPackage, and GeoTIFF capabilities use separate entry points. Check the plugins and resources required by each workflow.
+- GeoTIFF uses file/window reads and raster services rather than vector topology. Raster project references do not embed image pixels.
+- Await map.dispose(). The application owns a supplied shared workerRuntime.
+
+## Documentation
+
+- [Source layout](https://mapseekai.github.io/mapseekai/emap/en/concepts/architecture)
+- [Coordinates and CRS](https://mapseekai.github.io/mapseekai/emap/en/concepts/coordinates-crs)
+- [Emap map instance](https://mapseekai.github.io/mapseekai/emap/en/concepts/emap)
+- [Map and data model](https://mapseekai.github.io/mapseekai/emap/en/concepts/overview)
+- [Runtime composition](https://mapseekai.github.io/mapseekai/emap/en/concepts/runtime)
+- [Sources and layers](https://mapseekai.github.io/mapseekai/emap/en/concepts/source-layer)
+- [Topology model](https://mapseekai.github.io/mapseekai/emap/en/concepts/topology)
+- [Attributes](https://mapseekai.github.io/mapseekai/emap/en/data/attributes)
+- [DuckDB Processing Toolbox](https://mapseekai.github.io/mapseekai/emap/en/data/duckdb)
+- [Data formats](https://mapseekai.github.io/mapseekai/emap/en/data/formats)
+- [Direct GeoPackage vector import](https://mapseekai.github.io/mapseekai/emap/en/data/geopackage)
+- [Local GeoTIFF rasters](https://mapseekai.github.io/mapseekai/emap/en/data/geotiff)
+- [Data operations](https://mapseekai.github.io/mapseekai/emap/en/data/operations)
+- [Installation](https://mapseekai.github.io/mapseekai/emap/en/getting-started/installation)
+- [Your first map](https://mapseekai.github.io/mapseekai/emap/en/getting-started/quick-start)
+- [Camera](https://mapseekai.github.io/mapseekai/emap/en/guides/camera)
+- [Controls](https://mapseekai.github.io/mapseekai/emap/en/guides/controls)
+- [Editing](https://mapseekai.github.io/mapseekai/emap/en/guides/editing)
+- [Events](https://mapseekai.github.io/mapseekai/emap/en/guides/events)
+- [How-to guides](https://mapseekai.github.io/mapseekai/emap/en/guides/)
+- [Native Cordis plugins and AI capabilities](https://mapseekai.github.io/mapseekai/emap/en/guides/plugins)
+- [Selection](https://mapseekai.github.io/mapseekai/emap/en/guides/selection)
+- [Styling layers](https://mapseekai.github.io/mapseekai/emap/en/guides/styling)
+- [Web Worker](https://mapseekai.github.io/mapseekai/emap/en/guides/worker)
+- [Emap documentation](https://mapseekai.github.io/mapseekai/emap/en/)
+- [Error handling](https://mapseekai.github.io/mapseekai/emap/en/recipes/error-handling)
+- [File import](https://mapseekai.github.io/mapseekai/emap/en/recipes/file-upload)
+- [Fit bounds](https://mapseekai.github.io/mapseekai/emap/en/recipes/fit-bounds)
+- [Performance](https://mapseekai.github.io/mapseekai/emap/en/recipes/performance)
+- [Status control](https://mapseekai.github.io/mapseekai/emap/en/recipes/status-control)
+- [Undo and redo](https://mapseekai.github.io/mapseekai/emap/en/recipes/undo-redo)
+- [Compatibility](https://mapseekai.github.io/mapseekai/emap/en/reference/compatibility)
+- [Errors reference](https://mapseekai.github.io/mapseekai/emap/en/reference/errors)
+- [Events reference](https://mapseekai.github.io/mapseekai/emap/en/reference/events)
+- [FAQ](https://mapseekai.github.io/mapseekai/emap/en/reference/faq)
+- [Reference](https://mapseekai.github.io/mapseekai/emap/en/reference/)
+
+## Generated resources
+
+- [API signatures](https://mapseekai.github.io/mapseekai/emap/api/)
+- [Runnable examples](https://mapseekai.github.io/mapseekai/emap/examples/)
+
+Check the installed package declarations and matching Worker/WASM assets when using a published release. Authored pages link to owning implementation files.
+</pre></main></html>
