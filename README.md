@@ -93,6 +93,10 @@ pnpm build:site
 
 ## 构建、测试与校验
 
+文档推送到 `main` 后会自动触发官网 Pages 工作流，构建最新的文档与 eMAP 引擎。
+实际发布版本可在 [deployment.json](https://mapseekai.github.io/mapseekai/emap/deployment.json)
+中查看；详细维护流程见 [官网部署说明](https://github.com/mapseekai/mapseekai.github.io/blob/main/docs/deployment.md)。
+
 在提交文档或脚本修改前，运行完整校验命令：
 
 ```bash
