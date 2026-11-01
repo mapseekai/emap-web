@@ -9,6 +9,8 @@ stability: stable
 verifiedVersion: unreleased
 ---
 
+import DocsDiagram from '@site/src/components/DocsDiagram';
+
 # Sources and layers
 
 <span id="more-source-and-layer-ids" />
@@ -51,20 +53,7 @@ See [Data formats](../data/formats.md) and [File import](../recipes/file-upload.
 
 When importing user-supplied files that might lack CRS metadata or need reprojection to match the map's CRS, use `map.preflightSource()` **instead of** calling `map.addSource()` directly. Handle all three returned status branches:
 
-```mermaid
-flowchart TD
-  Start["User Uploads File (TopologySource)"] --> Preflight["map.preflightSource({ id, source })"]
-  Preflight --> StatusCheck{"Check result.status"}
-
-  StatusCheck -->|"ready (Complete CRS & Data)"| Confirm["map.confirmSource(result.plan)"]
-  Confirm --> Success["Source registered; add render layers"]
-
-  StatusCheck -->|"needs-input (Missing Source CRS)"| PromptUser["Prompt user to specify sourceCrs"]
-  PromptUser --> RePreflight["map.preflightSource(result.draft, { sourceCrs })"]
-  RePreflight --> StatusCheck
-
-  StatusCheck -->|"rejected (ID Conflict or Parse Error)"| Error["Abort and report result.diagnostics"]
-```
+<DocsDiagram name="source-preflight" language="en" alt="For ready, confirm registration; for needs-input, request the source CRS and retry preflight; for rejected, show diagnostics and stop." />
 
 ```ts
 const result = await map.preflightSource({ id: 'districts', source });

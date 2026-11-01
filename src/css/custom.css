@@ -125,6 +125,18 @@ body {
 .markdown th { background: var(--docs-surface); text-align: left; }
 .markdown td code { white-space: normal; overflow-wrap: anywhere; }
 .markdown pre { line-height: 1.65; }
+.docs-diagram {
+  max-width: 100%;
+  margin: var(--space-6) 0 var(--space-8);
+  overflow-x: auto;
+  border: 1px solid var(--docs-rule);
+  border-radius: 10px;
+  color-scheme: light;
+  line-height: 0;
+}
+.docs-diagram img { display: block; width: 100%; min-width: 620px; max-width: none; }
+.docs-diagram-hint { display: none; color: var(--ifm-color-content-secondary); font-size: 0.8rem; }
+:root[data-theme='dark'] .docs-diagram { color-scheme: dark; }
 .docs-actions p { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
 .docs-actions a {
   display: inline-flex;
@@ -144,6 +156,8 @@ body {
 .docs-paths section:nth-child(n + 3) { border-top: 1px solid var(--docs-rule); }
 @media (max-width: 600px) {
   .theme-doc-markdown { padding-inline: var(--space-1); }
+  .docs-diagram { margin-bottom: var(--space-2); }
+  .docs-diagram-hint { display: block; margin-bottom: var(--space-8); }
   .docs-paths { grid-template-columns: minmax(0, 1fr); gap: var(--space-2); }
   .docs-paths section + section { border-top: 1px solid var(--docs-rule); }
 }

@@ -9,6 +9,8 @@ stability: experimental
 verifiedVersion: unreleased
 ---
 
+import DocsDiagram from '@site/src/components/DocsDiagram';
+
 # 源码组织与架构边界
 
 <span id="测试组织" />
@@ -17,46 +19,7 @@ Emap 引擎仓库将**GIS 领域模型**、**地图渲染与交互热路径**、
 
 ## 1. 六个一级源码职责区
 
-```mermaid
-graph TD
-  subgraph UI["src/ui (浏览器 DOM 控件与主题)"]
-    Controls["NavigationControl / EditToolbar / StatusControl"]
-  end
-
-  subgraph Engine["src/engine (地图门面与高频热路径)"]
-    EmapFacade["Emap 门面 / Camera 变换"]
-    Handlers["交互 Handlers (Draw / Vertex / Transform)"]
-    Schedulers["RenderScheduler / Painter (Canvas2D / WebGL2 / WebGPU)"]
-    Ops["map.ops 数据操作编排"]
-  end
-
-  subgraph Runtime["src/runtime (Cordis 运行时与插件装配)"]
-    Presets["Presets (editor / viewer / headless / empty)"]
-    Services["Service Contracts & Providers (ctx.provide / inject)"]
-    Capabilities["AI Capability 注册表"]
-  end
-
-  subgraph Domain["src/domain (GIS 纯领域逻辑)"]
-    Topology["TopologySource / ArcCollection / Projections"]
-    Edit["EditCommand / Transaction / History / Validators"]
-  end
-
-  subgraph Integrations["src/integrations (第三方生态与 Worker 桥接隔离)"]
-    Mapshaper["Mapshaper 内部适配器 / Worker 协议"]
-    DuckDB["DuckDB-Wasm 空间分析工具箱"]
-    Arrow["Arrow / GeoParquet / Parquet-Wasm"]
-    GeoPackage["GeoPackage / SQL.js-Wasm"]
-    GeoTIFF["GeoTIFF / COG 栅格按窗口解码"]
-    MapLibre["MapLibre 在线底图服务"]
-  end
-
-  UI --> Engine
-  Engine --> Runtime
-  Engine --> Domain
-  Engine --> Integrations
-  Runtime --> Domain
-  Integrations --> Domain
-```
+<DocsDiagram name="architecture" language="zh" alt="源码职责区的依赖关系：UI 依赖引擎；引擎依赖运行时、领域模型和集成；运行时与集成依赖领域模型。" />
 
 | 源码目录 | 核心职责 | 架构依赖边界 |
 | --- | --- | --- |

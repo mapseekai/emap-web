@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 950" width="960" height="950" role="img" aria-labelledby="title desc">
+<title id="title">Source responsibilities</title>
+<desc id="desc">Source responsibilities: UI depends on engine; engine depends on runtime, domain and integrations; runtime and integrations depend on domain. Shared contains cross-layer types.</desc>
+<style>
+  :root { --bg:#f5faf6; --card:#ffffff; --ink:#183b29; --muted:#587264;
+    --line:#93b8a0; --border:#d6e8da; --accent:#237d50; --mint:#dff3e5;
+    --mint2:#c9e8d3; --soft:#edf6ef; --amber:#906527; --amber-bg:#fbf1df;
+    --rose:#92544f; --rose-bg:#faeeeb; --grid:#deebe1; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#17291f; --card:#20382a; --ink:#e2f3e7; --muted:#b0cbb8;
+      --line:#6d9c7a; --border:#395a43; --accent:#8bdfaa; --mint:#28543a;
+      --mint2:#326147; --soft:#243f2f; --amber:#e4c084; --amber-bg:#493c29;
+      --rose:#edb4aa; --rose-bg:#493331; --grid:#2d4835; }
+  }
+  text { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC',sans-serif; fill:var(--ink); }
+  .eyebrow { fill:var(--accent); font-size:15px; font-weight:700; letter-spacing:2.2px; }
+  .heading { font-size:30px; font-weight:750; }
+  .subheading { fill:var(--muted); font-size:18px; }
+  .card { fill:var(--card); stroke:var(--border); stroke-width:1.5; }
+  .soft-card { fill:var(--soft); stroke:var(--border); stroke-width:1.5; }
+  .card-title { font-size:23px; font-weight:700; }
+  .card-detail { fill:var(--muted); font-size:18px; }
+  .mono { font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace; font-size:17px; }
+  .mono-small { font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace; font-size:15px; }
+  .small { fill:var(--muted); font-size:16px; }
+  .chip { fill:var(--mint); }
+  .chip-text { fill:var(--accent); font-size:15px; font-weight:750; letter-spacing:.6px; }
+  .wire { fill:none; stroke:var(--line); stroke-width:2.5; stroke-linejoin:round; stroke-linecap:round; }
+  .accent-wire { fill:none; stroke:var(--accent); stroke-width:3; stroke-linejoin:round; stroke-linecap:round; }
+  .number { fill:var(--card); stroke:var(--border); stroke-width:1.5; }
+  .number-text { fill:var(--accent); font-family:'SFMono-Regular',Consolas,monospace; font-size:16px; font-weight:700; }
+</style>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9 z" fill="var(--line)"/></marker>
+  <marker id="arrow-accent" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9 z" fill="var(--accent)"/></marker>
+</defs>
+<rect width="960" height="950" fill="var(--bg)"/>
+<path d="M0 106 H960" stroke="var(--grid)" fill="none"/>
+<text x="44" y="38" class="eyebrow">EMAP / ARCHITECTURE</text>
+<text x="44" y="77" class="heading">Source responsibilities</text>
+<text x="916" y="76" class="small" text-anchor="end">Arrows show dependency direction</text>
+<g class="wire" marker-end="url(#arrow)"><path d="M480 230 V275"/><path d="M390 405 V446 H240 V480"/><path d="M570 405 V446 H720 V480"/><path d="M250 340 H28 V760 H250"/><path d="M240 625 V665 H365 V710"/><path d="M720 625 V665 H595 V710"/></g>
+<rect x="300" y="140" width="360" height="90" rx="17" class="card"/>
+<text x="322" y="176" class="card-title">src/ui</text>
+<text x="322" y="206" class="card-detail">Browser controls and themes</text>
+<rect x="250" y="275" width="460" height="130" rx="17" class="card"/>
+<text x="272" y="311" class="card-title">src/engine</text>
+<text x="272" y="341" class="card-detail">Map facade, interaction and rendering</text>
+<text x="272" y="366" class="card-detail">Emap · Camera · Handlers</text>
+<text x="272" y="391" class="card-detail">RenderScheduler · Painter · map.ops</text>
+<rect x="40" y="480" width="400" height="145" rx="17" class="card"/>
+<text x="62" y="516" class="card-title">src/runtime</text>
+<text x="62" y="546" class="card-detail">Runtime and services</text>
+<text x="62" y="571" class="card-detail">Presets, contracts and providers</text>
+<text x="62" y="596" class="card-detail">AI capability registry</text>
+<rect x="520" y="480" width="400" height="145" rx="17" class="card"/>
+<text x="542" y="516" class="card-title">src/integrations</text>
+<text x="542" y="546" class="card-detail">Integrations and Workers</text>
+<text x="542" y="571" class="card-detail">Mapshaper · DuckDB · Arrow</text>
+<text x="542" y="596" class="card-detail">GeoPackage · GeoTIFF · MapLibre</text>
+<rect x="250" y="710" width="460" height="110" rx="17" class="card"/>
+<text x="272" y="746" class="card-title">src/domain</text>
+<text x="272" y="776" class="card-detail">GIS domain model</text>
+<text x="272" y="801" class="card-detail">Topology · Edits · History</text>
+<rect x="250" y="855" width="460" height="58" rx="14" class="soft-card"/>
+<text x="272" y="891" class="mono">src/shared</text>
+<text x="410" y="891" class="card-detail">Shared types and utilities</text>
+</svg>

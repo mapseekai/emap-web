@@ -16,13 +16,11 @@ const config: Config = {
   projectName: 'emap',
   onBrokenLinks: 'throw',
   markdown: {
-    mermaid: true,
     hooks: {
       onBrokenMarkdownLinks: 'throw',
     },
   },
   themes: [
-    '@docusaurus/theme-mermaid',
     [
       '@easyops-cn/docusaurus-search-local',
       {

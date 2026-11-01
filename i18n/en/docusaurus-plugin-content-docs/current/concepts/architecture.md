@@ -9,6 +9,8 @@ stability: experimental
 verifiedVersion: unreleased
 ---
 
+import DocsDiagram from '@site/src/components/DocsDiagram';
+
 # Source organization
 
 <span id="test-organization" />
@@ -17,46 +19,7 @@ The `@mapseekai/emap` codebase separates pure domain logic, rendering and execut
 
 ## Directory responsibilities and dependency boundaries
 
-```mermaid
-graph TD
-  subgraph UI["src/ui (Browser DOM Controls & Themes)"]
-    Controls["NavigationControl / EditToolbar / StatusControl"]
-  end
-
-  subgraph Engine["src/engine (Map Facade & Hot Paths)"]
-    EmapFacade["Emap Facade / Camera"]
-    Handlers["Interactive Handlers (Draw / Vertex / Transform)"]
-    Schedulers["RenderScheduler / Painter (Canvas2D / WebGL2 / WebGPU)"]
-    Ops["map.ops Data Operations"]
-  end
-
-  subgraph Runtime["src/runtime (Cordis Runtime & Services)"]
-    Presets["Presets (editor / viewer / headless / empty)"]
-    Services["Service Contracts & Providers (ctx.provide / inject)"]
-    Capabilities["AI Capability Registry"]
-  end
-
-  subgraph Domain["src/domain (Pure GIS Domain Logic)"]
-    Topology["TopologySource / ArcCollection / Projections"]
-    Edit["EditCommand / Transaction / History / Validators"]
-  end
-
-  subgraph Integrations["src/integrations (Third-party & Worker Isolation)"]
-    Mapshaper["Mapshaper Adapter / Worker"]
-    DuckDB["DuckDB-Wasm Spatial Toolbox"]
-    Arrow["Arrow / GeoParquet / Parquet-Wasm"]
-    GeoPackage["GeoPackage / SQL.js-Wasm"]
-    GeoTIFF["GeoTIFF / COG Window Decoding"]
-    MapLibre["MapLibre Basemap Services"]
-  end
-
-  UI --> Engine
-  Engine --> Runtime
-  Engine --> Domain
-  Engine --> Integrations
-  Runtime --> Domain
-  Integrations --> Domain
-```
+<DocsDiagram name="architecture" language="en" alt="Source dependencies: UI depends on engine; engine depends on runtime, domain and integrations; runtime and integrations depend on domain." />
 
 | Directory | Primary responsibility | Dependency boundary |
 | --- | --- | --- |

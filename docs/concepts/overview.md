@@ -9,6 +9,8 @@ stability: stable
 verifiedVersion: unreleased
 ---
 
+import DocsDiagram from '@site/src/components/DocsDiagram';
+
 # 地图与数据模型 {#核心概念}
 
 Emap 的核心设计是将**底层空间数据（Source & Dataset）**、**视觉呈现配置（Render Layer）**和**交互编辑状态（Selection & History）**三者解耦。理解这一分层模型后，你不仅可以让多个渲染图层零拷贝地共享同一份拓扑几何，还能在修改顶点或属性时获得受控的撤销与重做能力。
@@ -24,21 +26,7 @@ Emap 的核心设计是将**底层空间数据（Source & Dataset）**、**视�
 - **`LayerSpecification`（渲染图层声明）**：纯视觉规则配置，通过 `source`（数据源 ID）和可选的 `source-layer`（数据图层名称）指向底层数据，声明如何将其绘制为面填充（`fill`）、线（`line`）或圆点（`circle`）。
 - **`Selection`（选择集）**：通过 `{ source, layer, id }` 构成的要素引用（`FeatureRef`）定位数据图层中的具体要素。
 
-```mermaid
-graph TD
-  Emap["Emap 实例"] --> Sources["数据源注册表 (TopologySource)"]
-  Emap --> RenderLayers["渲染图层注册表 (LayerSpecification)"]
-  Emap --> SelectionState["交互选择集 (Selection)"]
-
-  Sources -->|"持有 (Source ID)"| Dataset["拓扑数据集 (Dataset)"]
-  Dataset --> Arcs["共享弧段 (ArcCollection)"]
-  Dataset --> DataLayers["数据图层 (Data Layers: 几何 + 属性)"]
-
-  RenderLayers -->|"引用 Source ID + source-layer"| DataLayers
-  RenderLayers --> StyleRules["视觉规则 (Paint / Layout / Filter / Symbol)"]
-
-  SelectionState -->|"FeatureRef: { source, layer, id }"| DataLayers
-```
+<DocsDiagram name="data-model" language="zh" alt="地图实例分别管理数据源、渲染图层和选择集；数据源持有包含共享弧段与数据图层的数据集，渲染图层和选择集引用数据图层。" />
 
 这种解耦带来的直接好处是：**同一个多边形数据图层可以同时被一个 `fill` 填充渲染层和一个 `line` 描边渲染层引用**。调用 `map.removeLayer()` 只会移除某一种视觉样式，不会删除底层数据；而移除或替换 `TopologySource` 则会直接改变所有引用它的渲染图层的数据可用性（详见[数据源与图层](./source-layer.md)）。
 

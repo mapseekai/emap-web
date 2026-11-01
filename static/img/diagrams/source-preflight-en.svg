@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 850" width="960" height="850" role="img" aria-labelledby="title desc">
+<title id="title">Source preflight</title>
+<desc id="desc">For ready, confirm the source; for needs-input, request a CRS and run preflight again; for rejected, show diagnostics and stop.</desc>
+<style>
+  :root { --bg:#f5faf6; --card:#ffffff; --ink:#183b29; --muted:#587264;
+    --line:#93b8a0; --border:#d6e8da; --accent:#237d50; --mint:#dff3e5;
+    --mint2:#c9e8d3; --soft:#edf6ef; --amber:#906527; --amber-bg:#fbf1df;
+    --rose:#92544f; --rose-bg:#faeeeb; --grid:#deebe1; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#17291f; --card:#20382a; --ink:#e2f3e7; --muted:#b0cbb8;
+      --line:#6d9c7a; --border:#395a43; --accent:#8bdfaa; --mint:#28543a;
+      --mint2:#326147; --soft:#243f2f; --amber:#e4c084; --amber-bg:#493c29;
+      --rose:#edb4aa; --rose-bg:#493331; --grid:#2d4835; }
+  }
+  text { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC',sans-serif; fill:var(--ink); }
+  .eyebrow { fill:var(--accent); font-size:15px; font-weight:700; letter-spacing:2.2px; }
+  .heading { font-size:30px; font-weight:750; }
+  .subheading { fill:var(--muted); font-size:18px; }
+  .card { fill:var(--card); stroke:var(--border); stroke-width:1.5; }
+  .soft-card { fill:var(--soft); stroke:var(--border); stroke-width:1.5; }
+  .card-title { font-size:23px; font-weight:700; }
+  .card-detail { fill:var(--muted); font-size:18px; }
+  .mono { font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace; font-size:17px; }
+  .mono-small { font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace; font-size:15px; }
+  .small { fill:var(--muted); font-size:16px; }
+  .chip { fill:var(--mint); }
+  .chip-text { fill:var(--accent); font-size:15px; font-weight:750; letter-spacing:.6px; }
+  .wire { fill:none; stroke:var(--line); stroke-width:2.5; stroke-linejoin:round; stroke-linecap:round; }
+  .accent-wire { fill:none; stroke:var(--accent); stroke-width:3; stroke-linejoin:round; stroke-linecap:round; }
+  .number { fill:var(--card); stroke:var(--border); stroke-width:1.5; }
+  .number-text { fill:var(--accent); font-family:'SFMono-Regular',Consolas,monospace; font-size:16px; font-weight:700; }
+</style>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9 z" fill="var(--line)"/></marker>
+  <marker id="arrow-accent" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9 z" fill="var(--accent)"/></marker>
+</defs>
+<rect width="960" height="850" fill="var(--bg)"/>
+<path d="M0 106 H960" stroke="var(--grid)" fill="none"/>
+<text x="44" y="38" class="eyebrow">EMAP / SOURCE PREFLIGHT</text>
+<text x="44" y="77" class="heading">Source preflight</text>
+<text x="916" y="76" class="small" text-anchor="end">Confirm the CRS before registration</text>
+<g class="wire" marker-end="url(#arrow)"><path d="M480 225 V285"/><path d="M480 380 V420"/><path d="M480 500 V530 H175 V560"/><path d="M480 500 V560"/><path d="M480 500 V530 H785 V560"/><path d="M480 725 V790 H933 V460 H600"/></g>
+<rect x="300" y="130" width="360" height="95" rx="17" class="card"/>
+<text x="322" y="166" class="card-title">Choose a local file</text>
+<text x="322" y="196" class="card-detail">Create a TopologySource</text>
+<rect x="230" y="285" width="500" height="95" rx="17" class="soft-card"/>
+<text x="252" y="321" class="card-title">Run preflight</text>
+<text x="252" y="351" class="card-detail">map.preflightSource({ id, source })</text>
+<rect x="360" y="420" width="240" height="80" rx="18" class="card"/>
+<text x="480" y="453" class="mono" text-anchor="middle">result.status</text>
+<text x="480" y="479" class="small" text-anchor="middle">Check the returned status</text>
+<rect x="35" y="560" width="280" height="165" rx="17" class="card"/>
+<rect x="55" y="578" width="96" height="28" rx="14" fill="var(--mint)"/><text x="103.0" y="597" text-anchor="middle" style="fill:var(--accent)" class="chip-text">ready</text>
+<text x="55" y="636" class="card-detail">Data and CRS are ready</text>
+<text x="55" y="665" class="card-title">Confirm and register</text>
+<text x="55" y="698" class="small">Add render layers</text>
+<rect x="340" y="560" width="280" height="165" rx="17" class="card"/>
+<rect x="360" y="578" width="148" height="28" rx="14" fill="var(--amber-bg)"/><text x="434.0" y="597" text-anchor="middle" style="fill:var(--amber)" class="chip-text">needs-input</text>
+<text x="360" y="636" class="card-detail">Source CRS missing or invalid</text>
+<text x="360" y="665" class="card-title">Ask for sourceCrs</text>
+<text x="360" y="698" class="small">Run preflight with draft</text>
+<rect x="645" y="560" width="280" height="165" rx="17" class="card"/>
+<rect x="665" y="578" width="110" height="28" rx="14" fill="var(--rose-bg)"/><text x="720.0" y="597" text-anchor="middle" style="fill:var(--rose)" class="chip-text">rejected</text>
+<text x="665" y="636" class="card-detail">Data or ID was rejected</text>
+<text x="665" y="665" class="card-title">Show diagnostics</text>
+<text x="665" y="698" class="small">Stop this import</text>
+<text x="510" y="818" class="small">Retry with supplied CRS</text>
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 815" width="960" height="815" role="img" aria-labelledby="title desc">
+<title id="title">Map and data model</title>
+<desc id="desc">The map manages sources, render layers and selection. Sources own topology datasets with arcs and data layers; render layers and selections reference data layers.</desc>
+<style>
+  :root { --bg:#f5faf6; --card:#ffffff; --ink:#183b29; --muted:#587264;
+    --line:#93b8a0; --border:#d6e8da; --accent:#237d50; --mint:#dff3e5;
+    --mint2:#c9e8d3; --soft:#edf6ef; --amber:#906527; --amber-bg:#fbf1df;
+    --rose:#92544f; --rose-bg:#faeeeb; --grid:#deebe1; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#17291f; --card:#20382a; --ink:#e2f3e7; --muted:#b0cbb8;
+      --line:#6d9c7a; --border:#395a43; --accent:#8bdfaa; --mint:#28543a;
+      --mint2:#326147; --soft:#243f2f; --amber:#e4c084; --amber-bg:#493c29;
+      --rose:#edb4aa; --rose-bg:#493331; --grid:#2d4835; }
+  }
+  text { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC',sans-serif; fill:var(--ink); }
+  .eyebrow { fill:var(--accent); font-size:15px; font-weight:700; letter-spacing:2.2px; }
+  .heading { font-size:30px; font-weight:750; }
+  .subheading { fill:var(--muted); font-size:18px; }
+  .card { fill:var(--card); stroke:var(--border); stroke-width:1.5; }
+  .soft-card { fill:var(--soft); stroke:var(--border); stroke-width:1.5; }
+  .card-title { font-size:23px; font-weight:700; }
+  .card-detail { fill:var(--muted); font-size:18px; }
+  .mono { font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace; font-size:17px; }
+  .mono-small { font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace; font-size:15px; }
+  .small { fill:var(--muted); font-size:16px; }
+  .chip { fill:var(--mint); }
+  .chip-text { fill:var(--accent); font-size:15px; font-weight:750; letter-spacing:.6px; }
+  .wire { fill:none; stroke:var(--line); stroke-width:2.5; stroke-linejoin:round; stroke-linecap:round; }
+  .accent-wire { fill:none; stroke:var(--accent); stroke-width:3; stroke-linejoin:round; stroke-linecap:round; }
+  .number { fill:var(--card); stroke:var(--border); stroke-width:1.5; }
+  .number-text { fill:var(--accent); font-family:'SFMono-Regular',Consolas,monospace; font-size:16px; font-weight:700; }
+</style>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9 z" fill="var(--line)"/></marker>
+  <marker id="arrow-accent" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9 z" fill="var(--accent)"/></marker>
+</defs>
+<rect width="960" height="815" fill="var(--bg)"/>
+<path d="M0 106 H960" stroke="var(--grid)" fill="none"/>
+<text x="44" y="38" class="eyebrow">EMAP / DATA MODEL</text>
+<text x="44" y="77" class="heading">Map and data model</text>
+<text x="916" y="76" class="small" text-anchor="end">Data, presentation and selection</text>
+<g class="wire" marker-end="url(#arrow)"><path d="M480 220 V245 H168 V280"/><path d="M480 220 V280"/><path d="M480 220 V245 H792 V280"/><path d="M168 390 V455"/><path d="M480 390 V455"/><path d="M792 390 V455"/><path d="M168 565 V615 H168 V665"/><path d="M168 615 H480 V665"/><path d="M348 335 H324 V715 H348"/><path d="M792 565 V715 H612"/></g>
+<rect x="300" y="130" width="360" height="90" rx="17" class="soft-card"/>
+<text x="322" y="166" class="card-title">Emap instance</text>
+<text x="322" y="196" class="card-detail">Map workspace</text>
+<rect x="36" y="280" width="264" height="110" rx="17" class="card"/>
+<text x="58" y="316" class="card-title">Source registry</text>
+<text x="58" y="346" class="card-detail">TopologySource</text>
+<rect x="348" y="280" width="264" height="110" rx="17" class="card"/>
+<text x="370" y="316" class="card-title">Render layer registry</text>
+<text x="370" y="346" class="card-detail">LayerSpecification</text>
+<rect x="660" y="280" width="264" height="110" rx="17" class="card"/>
+<text x="682" y="316" class="card-title">Selection state</text>
+<text x="682" y="346" class="card-detail">Selection</text>
+<rect x="36" y="455" width="264" height="110" rx="17" class="card"/>
+<text x="58" y="491" class="card-title">Topology dataset</text>
+<text x="58" y="521" class="card-detail">Dataset</text>
+<rect x="348" y="455" width="264" height="110" rx="17" class="card"/>
+<text x="370" y="491" class="card-title">Style rules</text>
+<text x="370" y="521" class="card-detail">Paint · Layout</text>
+<text x="370" y="546" class="card-detail">Filter · Symbol</text>
+<rect x="660" y="455" width="264" height="110" rx="17" class="card"/>
+<text x="682" y="491" class="card-title">Feature reference</text>
+<text x="682" y="521" class="card-detail">{ source, layer, id }</text>
+<rect x="36" y="665" width="264" height="100" rx="17" class="soft-card"/>
+<text x="58" y="701" class="card-title">Shared arcs</text>
+<text x="58" y="731" class="card-detail">ArcCollection</text>
+<rect x="348" y="665" width="264" height="100" rx="17" class="soft-card"/>
+<text x="370" y="701" class="card-title">Data layers</text>
+<text x="370" y="731" class="card-detail">Geometry and attributes</text>
+<text x="639" y="752" class="small">Source ID + data layer</text>
+</svg>

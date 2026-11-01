@@ -9,6 +9,8 @@ stability: stable
 verifiedVersion: unreleased
 ---
 
+import DocsDiagram from '@site/src/components/DocsDiagram';
+
 # 共享弧段与拓扑模型
 
 与将每个多边形独立保存为坐标数组的传统渲染器不同，Emap 采用**共享弧段拓扑（Mapshaper 拓扑结构）**存储线和面要素：两个相邻行政区或地块的公共边界在底层只保存为一条共享弧段（Arc），两侧多边形通过有符号弧段索引共同引用这段边界。这种设计不仅消除了冗余坐标，还让“共边同步编辑”和“保持拓扑不裂缝的快速几何简化”成为原生能力。
@@ -36,28 +38,7 @@ console.log(layers.length, arcs?.getPointCount?.(), dataset?.info);
 
 ## 2. 共享边界对几何编辑的影响
 
-```mermaid
-graph LR
-  subgraph DataLayer["数据图层 (shapes)"]
-    PolyA["多边形 A (shapes[0])<br/>Arcs: [Arc 0, Arc 1, Arc 2]"]
-    PolyB["多边形 B (shapes[1])<br/>Arcs: [~Arc 2, Arc 3, Arc 4]"]
-  end
-
-  subgraph ArcTable["共享弧段表 (ArcCollection)"]
-    Arc0["Arc 0: 独占边界 A1"]
-    Arc1["Arc 1: 独占边界 A2"]
-    Arc2["Arc 2: 公共共享边界 (共享坐标序列)"]
-    Arc3["Arc 3: 独占边界 B1"]
-    Arc4["Arc 4: 独占边界 B2"]
-  end
-
-  PolyA --> Arc0
-  PolyA --> Arc1
-  PolyA -->|"正向引用 [Arc 2]"| Arc2
-  PolyB -->|"反向引用 [~Arc 2]"| Arc2
-  PolyB --> Arc3
-  PolyB --> Arc4
-```
+<DocsDiagram name="shared-arcs" language="zh" alt="相邻多边形 A 和 B 共用弧段 2：A 正向引用 2，B 反向引用 ~2；移动共边顶点会同时改变两个多边形。" />
 
 理解共享弧段对于设计编辑交互至关重要：
 

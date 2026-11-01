@@ -9,6 +9,8 @@ stability: stable
 verifiedVersion: unreleased
 ---
 
+import DocsDiagram from '@site/src/components/DocsDiagram';
+
 # 数据源与图层
 
 <span id="更多-source-选项" />
@@ -54,20 +56,7 @@ if (bounds.hasBounds()) map.fitBounds(bounds, { padding: 24, duration: 0 });
 
 面对用户上传的本地文件（如可能缺失 `.prj` 投影文件的 Shapefile），直接调用 `addSource()` 可能因缺少 CRS 而失败。此时应使用 `map.preflightSource()` 替代 `addSource()`，在正式写入地图前完成坐标系检查与交互式补全：
 
-```mermaid
-flowchart TD
-  Start["用户上传文件 (TopologySource)"] --> Preflight["map.preflightSource({ id, source })"]
-  Preflight --> StatusCheck{"检查 result.status"}
-
-  StatusCheck -->|"ready (CRS 与数据完备)"| Confirm["map.confirmSource(result.plan)"]
-  Confirm --> Success["数据源注册成功，添加渲染图层"]
-
-  StatusCheck -->|"needs-input (缺失源 CRS)"| PromptUser["弹窗提示用户选择或输入 sourceCrs"]
-  PromptUser --> RePreflight["map.preflightSource(result.draft, { sourceCrs })"]
-  RePreflight --> StatusCheck
-
-  StatusCheck -->|"rejected (ID 冲突或格式非法)"| Error["中止并展示 result.diagnostics"]
-```
+<DocsDiagram name="source-preflight" language="zh" alt="预检返回 ready 时确认注册；needs-input 时向用户询问源坐标系并重新预检；rejected 时展示诊断并停止导入。" />
 
 ```ts
 const result = await map.preflightSource({ id: 'districts', source });

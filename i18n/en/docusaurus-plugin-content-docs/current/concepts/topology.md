@@ -9,6 +9,8 @@ stability: stable
 verifiedVersion: unreleased
 ---
 
+import DocsDiagram from '@site/src/components/DocsDiagram';
+
 # Topology model
 
 In Emap, line and polygon features do not store duplicate coordinate arrays for shared boundaries. Instead, paths reference indexed **arcs** in a shared `ArcCollection` (while point features store `[x, y]` coordinates directly). When two adjacent polygons share a boundary arc, moving a vertex on that arc updates both polygons simultaneously without opening gaps or overlaps.
@@ -33,28 +35,7 @@ console.log(layers.length, arcs?.getPointCount?.(), dataset?.info);
 
 <span id="editing-and-shared-boundaries" />
 
-```mermaid
-graph LR
-  subgraph DataLayer["Data Layer (shapes)"]
-    PolyA["Polygon A (shapes[0])<br/>Arcs: [Arc 0, Arc 1, Arc 2]"]
-    PolyB["Polygon B (shapes[1])<br/>Arcs: [~Arc 2, Arc 3, Arc 4]"]
-  end
-
-  subgraph ArcTable["Shared Arcs (ArcCollection)"]
-    Arc0["Arc 0: Outer Boundary A1"]
-    Arc1["Arc 1: Outer Boundary A2"]
-    Arc2["Arc 2: Shared Boundary (Shared Coordinates)"]
-    Arc3["Arc 3: Outer Boundary B1"]
-    Arc4["Arc 4: Outer Boundary B2"]
-  end
-
-  PolyA --> Arc0
-  PolyA --> Arc1
-  PolyA -->|"Forward ref [Arc 2]"| Arc2
-  PolyB -->|"Reverse ref [~Arc 2]"| Arc2
-  PolyB --> Arc3
-  PolyB --> Arc4
-```
+<DocsDiagram name="shared-arcs" language="en" alt="Adjacent polygons A and B share arc 2: A references 2 forward and B references ~2 in reverse. Moving a shared vertex updates both polygons." />
 
 Because adjacent polygons reference the same arc ID:
 

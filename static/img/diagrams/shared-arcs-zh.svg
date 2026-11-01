@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 715" width="960" height="715" role="img" aria-labelledby="title desc">
+<title id="title">共享弧段</title>
+<desc id="desc">多边形 A 按正向引用 Arc 2，多边形 B 按反向引用 ~Arc 2；两者共用一组边界坐标。</desc>
+<style>
+  :root { --bg:#f5faf6; --card:#ffffff; --ink:#183b29; --muted:#587264;
+    --line:#93b8a0; --border:#d6e8da; --accent:#237d50; --mint:#dff3e5;
+    --mint2:#c9e8d3; --soft:#edf6ef; --amber:#906527; --amber-bg:#fbf1df;
+    --rose:#92544f; --rose-bg:#faeeeb; --grid:#deebe1; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#17291f; --card:#20382a; --ink:#e2f3e7; --muted:#b0cbb8;
+      --line:#6d9c7a; --border:#395a43; --accent:#8bdfaa; --mint:#28543a;
+      --mint2:#326147; --soft:#243f2f; --amber:#e4c084; --amber-bg:#493c29;
+      --rose:#edb4aa; --rose-bg:#493331; --grid:#2d4835; }
+  }
+  text { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC',sans-serif; fill:var(--ink); }
+  .eyebrow { fill:var(--accent); font-size:15px; font-weight:700; letter-spacing:2.2px; }
+  .heading { font-size:30px; font-weight:750; }
+  .subheading { fill:var(--muted); font-size:18px; }
+  .card { fill:var(--card); stroke:var(--border); stroke-width:1.5; }
+  .soft-card { fill:var(--soft); stroke:var(--border); stroke-width:1.5; }
+  .card-title { font-size:23px; font-weight:700; }
+  .card-detail { fill:var(--muted); font-size:18px; }
+  .mono { font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace; font-size:17px; }
+  .mono-small { font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace; font-size:15px; }
+  .small { fill:var(--muted); font-size:16px; }
+  .chip { fill:var(--mint); }
+  .chip-text { fill:var(--accent); font-size:15px; font-weight:750; letter-spacing:.6px; }
+  .wire { fill:none; stroke:var(--line); stroke-width:2.5; stroke-linejoin:round; stroke-linecap:round; }
+  .accent-wire { fill:none; stroke:var(--accent); stroke-width:3; stroke-linejoin:round; stroke-linecap:round; }
+  .number { fill:var(--card); stroke:var(--border); stroke-width:1.5; }
+  .number-text { fill:var(--accent); font-family:'SFMono-Regular',Consolas,monospace; font-size:16px; font-weight:700; }
+</style>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9 z" fill="var(--line)"/></marker>
+  <marker id="arrow-accent" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9 z" fill="var(--accent)"/></marker>
+</defs>
+<rect width="960" height="715" fill="var(--bg)"/>
+<path d="M0 106 H960" stroke="var(--grid)" fill="none"/>
+<text x="44" y="38" class="eyebrow">EMAP / TOPOLOGY</text>
+<text x="44" y="77" class="heading">共享弧段</text>
+<text x="916" y="76" class="small" text-anchor="end">同一条边，两种引用方向</text>
+<rect x="35" y="138" width="525" height="405" rx="20" class="card"/>
+<path d="M100 230 L315 210 L340 480 L105 500 Z" fill="var(--mint)"/><path d="M315 210 L520 230 L540 505 L340 480 Z" fill="var(--mint2)"/>
+<g class="wire" style="stroke-width:4"><path d="M340 480 L105 500 L100 230"/><path d="M100 230 L315 210"/><path d="M315 210 L520 230"/><path d="M520 230 L540 505 L340 480"/></g>
+<path d="M315 210 L340 480" class="accent-wire" style="stroke-width:7"/>
+<path d="M304 285 L310 355" class="accent-wire" marker-end="url(#arrow-accent)"/><path d="M349 415 L343 345" class="accent-wire" marker-end="url(#arrow-accent)"/>
+<text x="175" y="350" class="heading">A</text>
+<text x="440" y="350" class="heading">B</text>
+<circle cx="95" cy="366" r="17" class="number"/><text x="95" y="372" class="number-text" text-anchor="middle">0</text>
+<circle cx="205" cy="211" r="17" class="number"/><text x="205" y="217" class="number-text" text-anchor="middle">1</text>
+<circle cx="326" cy="455" r="17" class="number"/><text x="326" y="461" class="number-text" text-anchor="middle">2</text>
+<circle cx="420" cy="210" r="17" class="number"/><text x="420" y="216" class="number-text" text-anchor="middle">3</text>
+<circle cx="535" cy="366" r="17" class="number"/><text x="535" y="372" class="number-text" text-anchor="middle">4</text>
+<rect x="600" y="138" width="325" height="180" rx="18" class="card"/>
+<text x="622" y="175" class="card-title">多边形 A</text>
+<text x="622" y="207" class="mono">shapes[0]</text>
+<text x="622" y="250" class="mono">[ 0, 1, 2 ]</text>
+<rect x="622" y="270" width="132" height="28" rx="14" fill="var(--mint)"/><text x="688.0" y="289" text-anchor="middle" style="fill:var(--accent)" class="chip-text">正向引用</text>
+<rect x="600" y="342" width="325" height="180" rx="18" class="card"/>
+<text x="622" y="379" class="card-title">多边形 B</text>
+<text x="622" y="411" class="mono">shapes[1]</text>
+<text x="622" y="454" class="mono">[ ~2, 3, 4 ]</text>
+<rect x="622" y="474" width="132" height="28" rx="14" fill="var(--mint)"/><text x="688.0" y="493" text-anchor="middle" style="fill:var(--accent)" class="chip-text">反向引用</text>
+<rect x="35" y="590" width="890" height="88" rx="17" class="soft-card"/>
+<text x="60" y="626" class="eyebrow">ARC 2 / ~2</text>
+<text x="60" y="655" class="card-detail">同一组坐标  ·  移动共享顶点，两个多边形同步变化。</text>
+</svg>

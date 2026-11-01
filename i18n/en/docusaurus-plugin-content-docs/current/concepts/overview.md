@@ -9,6 +9,8 @@ stability: stable
 verifiedVersion: unreleased
 ---
 
+import DocsDiagram from '@site/src/components/DocsDiagram';
+
 # Map and data model {#concepts-overview}
 
 <span id="more-layer-parameters" />
@@ -22,21 +24,7 @@ Emap strictly separates **spatial data storage**, **visual presentation**, and *
 
 An `Emap` instance coordinates workspace services. A `TopologySource` holds a topology dataset containing one or more **data layers** (geometry plus attributes). A `LayerSpecification` (**render layer**) references a source ID and an optional data-layer ID (`source-layer`) to define how that data is drawn:
 
-```mermaid
-graph TD
-  Emap["Emap Instance"] --> Sources["Sources Registry (TopologySource)"]
-  Emap --> RenderLayers["Render Layers Registry (LayerSpecification)"]
-  Emap --> SelectionState["Selection State"]
-
-  Sources -->|"Owns (Source ID)"| Dataset["Topology Dataset"]
-  Dataset --> Arcs["Shared Arcs (ArcCollection)"]
-  Dataset --> DataLayers["Data Layers (Geometry + Attributes)"]
-
-  RenderLayers -->|"References Source ID + source-layer"| DataLayers
-  RenderLayers --> StyleRules["Style Rules (Paint / Layout / Filter / Symbol)"]
-
-  SelectionState -->|"FeatureRef: { source, layer, id }"| DataLayers
-```
+<DocsDiagram name="data-model" language="en" alt="A map manages sources, render layers and selection. Sources own datasets with shared arcs and data layers; render layers and selection reference data layers." />
 
 Because presentation is decoupled from storage:
 
